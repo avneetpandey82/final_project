@@ -12,6 +12,6 @@ WORKDIR /server
 COPY --from=builder /app/myApp .
 COPY --from=builder /app/templates ./templates
 
-EXPOSE 8080
+EXPOSE 3000
 
 CMD ["./myApp"]
