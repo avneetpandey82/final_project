@@ -43,14 +43,20 @@ func handleUserRegister(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Error parsing JSON", http.StatusBadRequest)
 		return
 	}
-	fmt.Println(data.FullName)
 
 	collection := mongoClient.Database("UsersData").Collection("users")
 	_, err = collection.InsertOne(context.TODO(), data)
+
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
+	message := "Signup successful! Welcome, " + r.FormValue("fullName") + "."
+
+	w.Header().Set("Content-Type", "text/plain")
+
+	w.WriteHeader(http.StatusOK)
+	w.Write([]byte(message))
 }
 func main() {
 	var err error
@@ -62,7 +68,6 @@ func main() {
 	username := os.Getenv("MONGODB_USERNAME")
 	password := os.Getenv("MONGODB_PASSWORD")
 	uri := fmt.Sprintf("mongodb+srv://%s:%s@cluster0.orwve.mongodb.net/", username, password)
-	print(uri)
 	mongoClient, err = mongo.Connect(context.TODO(), options.Client().ApplyURI(uri))
 
 	if err != nil {

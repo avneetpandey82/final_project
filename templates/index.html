@@ -133,12 +133,10 @@
       event.preventDefault(); 
 
       const formData = new FormData(event.target);
-      console.log(formData)
       let dataToSend={}
       formData.forEach((value, key) => {
         dataToSend[key]=value
     });
-    console.log(dataToSend)
 
       fetch('/api/registerUser', {
         method: 'POST',
@@ -146,8 +144,8 @@
       })
       .then(response => response.text())
       .then(data => {
-        if (data === "success") {
-          showToast("Signup successful!", "success");  
+        if (data.includes("Welcome")) {
+          showToast(data, "success");  
         } else {
           showToast("Signup failed. Please try again.", "error"); 
         }
