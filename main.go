@@ -49,5 +49,5 @@ func main() {
 	fs := http.FileServer(http.Dir("./templates"))
 	http.Handle("/", fs)
 	http.HandleFunc("/api/saveIP", saveIPHandler)
-	log.Fatal(http.ListenAndServe(":8080", nil))
+	http.ListenAndServe(":80", nil)
 }
