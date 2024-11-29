@@ -43,7 +43,7 @@ We created a simple HTML form using Bootstrap to collect user registration data.
 
 ### 3. **Handling Authentication**
 
-In the `handleUserRegister` function, basic validation is performed. However, you can add more checks for authentication or validation if needed. For example, you might want to validate if the email already exists in the database.
+In the `handleUserRegister` function, basic validation is performed. However, we can add more checks for authentication or validation if needed. For example, we might want to validate if the email already exists in the database.
 
 ### 4. **Running the Project**
 
