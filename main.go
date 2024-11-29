@@ -6,9 +6,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
-	"os"
 
-	"github.com/joho/godotenv"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
@@ -60,13 +58,10 @@ func handleUserRegister(w http.ResponseWriter, r *http.Request) {
 }
 func main() {
 	var err error
-	err = godotenv.Load()
-	if err != nil {
-		fmt.Println("Error loading .env file")
-		return
-	}
-	username := os.Getenv("MONGODB_USERNAME")
-	password := os.Getenv("MONGODB_PASSWORD")
+	// username := os.Getenv("MONGODB_USERNAME")
+	username := "avneetpandey82"
+	// password := os.Getenv("MONGODB_PASSWORD")
+	password := "1tf74EVaWYVNkWvC"
 	uri := fmt.Sprintf("mongodb+srv://%s:%s@cluster0.orwve.mongodb.net/", username, password)
 	mongoClient, err = mongo.Connect(context.TODO(), options.Client().ApplyURI(uri))
 
