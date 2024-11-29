@@ -51,6 +51,6 @@ In the `handleUserRegister` function, basic validation is performed. However, we
    You can build a Docker image for this Go application and run it in a container.
 
    ```bash
-   docker build -t user-registration .
-   docker run -p 8080:8080 user-registration
+   docker build -t final_project:latest .
+   docker run -p 80:80 final_project:latest
    ```
